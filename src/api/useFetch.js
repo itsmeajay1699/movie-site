@@ -15,7 +15,7 @@ const useFetch = (url) => {
           }`
         );
         
-        setApiData(resp.data.results);
+        setApiData(resp.data);
         setIsLoading(false);
       } catch (error) {
         setServerError(error);

@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "./home.scss";
 
-import useFetch from "../../api/useFetch";
+import HeroBanner from "./heroBanner/heroBanner";
+import Header from "../../components/header/Header";
 
 const Home = () => {
-  // print env variables
-  // console.log(import.meta.env.VITE_REACT_APP_TMBD_API_KEY );
-  const { isLoading, apiData, serverError } = useFetch("/movie/popular");
-  console.log(apiData);
   return (
-    <div>
-      <h1>Home</h1>
-      {isLoading && <p>Loading...</p>}
-      {serverError && <p>{serverError}</p>}
-      {apiData && (
-        <ul>
-          {apiData.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      )}
+    <div className="homePage">
+      <Header/>
+      <HeroBanner />
     </div>
   );
 };
