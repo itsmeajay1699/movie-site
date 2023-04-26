@@ -5,61 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import "./reactSlider.scss";
 import Utils from "../../utils/Utils";
 
-export default function SimpleSlider() {
-  //   var settings = {
-  //     dots: true,
-  //     infinite: false,
-  //     speed: 500,
-  //     slidesToShow:4,
-  //     slidesToScroll: 1,
-  //   };
+export default function SimpleSlider({ children }) {
   return (
     <Slider {...Utils.settings} className="react-slider">
-      <div>
-        <div className="container">
-          <h3>1</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <h3>2</h3>
-        </div>
-      </div>
+      {children}
     </Slider>
   );
 }
