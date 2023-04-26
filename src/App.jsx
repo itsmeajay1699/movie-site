@@ -12,7 +12,6 @@ import "./App.css";
 function App() {
   const dispatch = useDispatch();
   const trendingUrl = useSelector((state) => state.trending.trendingUrl);
-  const resPopularData = useSelector((state) => state.popular.resPopularData);
   const popularUrl = useSelector((state) => state.popular.popularUrl);
   useEffect(() => {
     apiTesting();
@@ -40,7 +39,6 @@ function App() {
   dispatch(getData(apiData));
 
   const { apiData: data } = useFetch(`/${popularUrl}/popular`);
-  console.log(data)
   dispatch(getPopularData(data));
   return (
     <>
