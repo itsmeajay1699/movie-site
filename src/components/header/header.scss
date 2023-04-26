@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   transition: all ease 0.5s;
+  background-color: #014970;
   z-index: 2;
   &.top {
     background: rgba(0, 0, 0, 0.25);
@@ -30,7 +31,9 @@
   .logo {
     cursor: pointer;
     img {
+      display: block;
       height: 50px;
+      width: 150px;
     }
   }
   .menuItems {

@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./header.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
+import Utils from "../../utils/Utils";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -56,7 +57,7 @@ const Header = () => {
     >
       <ContentWrapper>
         <div className="logo">
-          {/* <img src={logo} alt="logo" /> */}
+          <img src={Utils.logoUrl} alt="logo" />
         </div>
         <ul className="menuItems">
           <li className="menuItem">Movies</li>

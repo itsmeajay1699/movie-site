@@ -23,7 +23,7 @@ const heroBanner = () => {
 
   useEffect(() => {
     const image =
-     url.backdrop + apiData?.results[Math.floor(Math.random() * 20)].backdrop_path;
+     url.poster + apiData?.results[Math.floor(Math.random() * 20)].backdrop_path;
     setImg(image);
   }, [apiData]);
 

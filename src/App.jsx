@@ -26,7 +26,7 @@ function App() {
       .then((res) => {
         const url = {
           backdrop: res.data.images.secure_base_url + "original",
-          poster: res.data.images.secure_base_url + "w500",
+          poster: res.data.images.secure_base_url + "original",
         };
         dispatch(getApiConfiguration(url));
       })
