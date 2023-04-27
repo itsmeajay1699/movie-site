@@ -1,0 +1,41 @@
+.movie-card-container {
+  margin-left: 20px;
+  color: black;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.movie-poster {
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.movie-bottom {
+  margin-left: 10px;
+}
+
+// smoth animation of the movie card
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.movie-top {
+  position: relative;
+}
+.yt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #ff0000;
+}

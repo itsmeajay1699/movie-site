@@ -7,12 +7,15 @@ import { getApiConfiguration } from "./store/homeSlice";
 import { getData } from "./store/trendingSlice";
 import { getPopularData } from "./store/popular";
 import useFetch from "./api/useFetch";
+import { getTrailerData } from "./store/trailerSlice";
 import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
   const trendingUrl = useSelector((state) => state.trending.trendingUrl);
   const popularUrl = useSelector((state) => state.popular.popularUrl);
+  const trailerData = useSelector((state) => state.trailer.resData);
+  const trailerUrl = useSelector((state) => state.trailer.trailerUrl);
   useEffect(() => {
     apiTesting();
   }, []);
@@ -40,6 +43,9 @@ function App() {
 
   const { apiData: data } = useFetch(`/${popularUrl}/popular`);
   dispatch(getPopularData(data));
+
+  const { apiData: latestData } = useFetch(`/movie/upcoming`);
+  dispatch(getTrailerData(latestData));
   return (
     <>
       <Home />

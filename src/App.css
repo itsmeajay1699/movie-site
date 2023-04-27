@@ -22,3 +22,10 @@ button {
   font-weight: bold;
   color: #3d9989;
 }
+
+ul {
+  list-style: none;
+}
+li {
+  margin: 10px 0;
+}
