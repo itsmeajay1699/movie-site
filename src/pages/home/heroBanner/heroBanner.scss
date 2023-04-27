@@ -6,10 +6,8 @@
   background-color: black;
   display: flex;
   align-items: center;
-  margin: 0 auto;
   position: relative;
   @include md {
-    max-width:1400px;
     height: 500px;
   }
   .backdrop-img {
