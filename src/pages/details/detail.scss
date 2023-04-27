@@ -3,6 +3,7 @@
 .detail-wrapper {
   .billed-cast {
     margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 1.8rem;
     font-weight: 600;
   }
@@ -10,6 +11,39 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .media {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 38%;
+    .type {
+      font-size: 1.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
 }
 
-//https://api.themoviedb.org/3/movie/503356/credits?api_key=23b5ff71afe8a3392b93c3310ea0915b
+.underline {
+  text-decoration: underline;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.media-wrapper {
+  padding: 20px 0;
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import "./castCard.scss";
-const CastCard = ({ src, name, know }) => {
+const CastCard = ({ src, name, know, width, pad }) => {
   return (
-    <div className="cast-card">
+    <div style={{ margin: pad, width: width }} className="cast-card">
       <div className="cast-card__image">
-        <img src={src} alt={name} />
+        <img style={{ width: width }} src={src} alt={name} />
       </div>
       <div className="cast-card__name">
         <h3>{name}</h3>

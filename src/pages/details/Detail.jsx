@@ -10,8 +10,9 @@ import CastCard from "../../components/castCard/CastCard";
 import SimpleSlider from "../../components/reactSlider/ReactSlider";
 import defaultImage from "../../assets/avatar.png";
 import { getTrailerKey } from "../../store/trailerSlice";
+import { setMedia, setMediaData } from "../../store/mediaTypeSlice";
 import ReactPlayer from "react-player";
-import toast, { Toaster } from "react-hot-toast";
+
 const Detail = () => {
   const { id } = useParams();
   const popularUrl = useSelector((state) => state.popular.popularUrl);
@@ -26,7 +27,17 @@ const Detail = () => {
 
   const url = useSelector((state) => state.home.url.poster);
 
-  const movieCredit = useSelector((state) => state?.movieDetail?.movieCredits);
+  const movieCredit = useSelector((state) => state.movieDetail.movieCredits);
+
+  const media = useSelector((state) => state.media.media);
+
+  // fetch poster and backdrop images
+
+  const { apiData: movieImages } = useFetch(`/${popularUrl}/${id}/images`);
+  dispatch(setMediaData(movieImages));
+  const mediaData = useSelector((state) => state.media.mediaData);
+
+  console.log(media);
 
   return (
     <>
@@ -48,6 +59,48 @@ const Detail = () => {
               />
             ))}
           </SimpleSlider>
+
+          <div className="media">
+            <h2>Media</h2>
+            <div
+              onClick={() => dispatch(setMedia("poster"))}
+              className={`${media === "poster" ? "underline" : ""} type`}
+            >
+              Posters
+            </div>
+            <div
+              onClick={() => dispatch(setMedia("backdrops"))}
+              className={`${media === "backdrops" ? "underline" : ""} type`}
+            >
+              Backdrops
+            </div>
+          </div>
+          <div className="media-wrapper">
+            {media === "poster"
+              ? mediaData?.backdrops?.map((images) => (
+                  <CastCard
+                    width="250px"
+                    pad="0 0 0 20px"
+                    src={
+                      images.profile_path === null
+                        ? defaultImage
+                        : `${url}${images.file_path}`
+                    }
+                    key={images.id}
+                  />
+                ))
+              : mediaData?.posters?.map((images) => (
+                  <CastCard
+                    width="250px"
+                    pad="0 0 0 20px"
+                    src={
+                      images.profile_path === null
+                        ? defaultImage
+                        : `${url}${images.file_path}`
+                    }
+                  ></CastCard>
+                ))}
+          </div>
         </ContentWrapper>
         {trailerId && (
           <div
