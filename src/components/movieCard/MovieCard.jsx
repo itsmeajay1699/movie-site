@@ -1,11 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./movieCard.scss";
+import { NavLink, useNavigate } from "react-router-dom";
 import Img from "../lazyLoadImage/img";
-const MovieCard = ({ src, title, date }) => {
+const MovieCard = ({ src, title, date, id }) => {
+  const navigate = useNavigate();
   const url = useSelector((state) => state.home.url.poster);
   return (
-    <div className="movie-card-container">
+    <div
+      onClick={() => navigate(`/movie/${id}`)}
+      className="movie-card-container"
+    >
       <div className="movie-top">
         <Img src={url + src} alt="movie poster" className="movie-poster"></Img>
       </div>

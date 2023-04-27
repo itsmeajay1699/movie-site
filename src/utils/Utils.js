@@ -1,4 +1,6 @@
 class Utils {
+  // dispatch
+
   // slider settings
   static settings = {
     dots: true,

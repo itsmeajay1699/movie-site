@@ -23,7 +23,7 @@ const Home = () => {
   // trailer Data
   const trailerData = useSelector((state) => state.trailer.resData);
   const trailerId = useSelector((state) => state.trailer.trailerId);
-  console.log(trailerId);
+
 
   return (
     <>
@@ -55,6 +55,7 @@ const Home = () => {
                 {
                   trendingData?.results?.map((item) => (
                     <MovieCard
+                      id = {item.id}
                       key={item.id}
                       src={`${url}${item.poster_path}`}
                       title={item.title}
@@ -127,6 +128,7 @@ const Home = () => {
               <SimpleSlider>
                 {popularData?.results?.map((item) => (
                   <MovieCard
+                    id={item.id}
                     key={item.id}
                     src={item.poster_path || item.profile_path}
                     title={item.title || item.name}

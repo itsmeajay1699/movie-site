@@ -8,8 +8,9 @@ import { getTrailerKey } from "../../store/trailerSlice";
 import useFetch from "../../api/useFetch";
 const TrailerCard = ({ id, src, title, date }) => {
   const url = useSelector((state) => state.home.url.poster);
+  
   const dispatch = useDispatch();
-  const fetchTrailer = async (id) => {
+   const fetchTrailer = async (id) => {
     const apiData = await axios.get(
       `${
         import.meta.env.VITE_REACT_APP_TMBD_API_BASE_URL

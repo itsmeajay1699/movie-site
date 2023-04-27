@@ -1,4 +1,15 @@
 @import "../../mixins.scss";
 
 .detail-wrapper {
+  .billed-cast {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .cast-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
+
+//https://api.themoviedb.org/3/movie/503356/credits?api_key=23b5ff71afe8a3392b93c3310ea0915b
