@@ -7,8 +7,10 @@ import { getApiConfiguration } from "./store/homeSlice";
 import { getData } from "./store/trendingSlice";
 import { getPopularData } from "./store/popular";
 import useFetch from "./api/useFetch";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { getTrailerData } from "./store/trailerSlice";
 import "./App.css";
+import Detail from "./pages/details/Detail";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,7 +50,12 @@ function App() {
   dispatch(getTrailerData(latestData));
   return (
     <>
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
