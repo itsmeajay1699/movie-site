@@ -13,6 +13,8 @@ import TrailerCard from "../../components/trailerCard/TrailerCard";
 import ReactPlayer from "react-player";
 import { getTrailerKey } from "../../store/trailerSlice";
 import Footer from "../../components/footer/Footer";
+import SampleNextArrow from "../../components/customArrors/nextArror";
+import SamplePrevArrow from "../../components/customArrors/prevArror";
 const Home = () => {
   const dispatch = useDispatch();
   const trendingUrl = useSelector((state) => state.trending.trendingUrl);
@@ -23,7 +25,42 @@ const Home = () => {
   // trailer Data
   const trailerData = useSelector((state) => state.trailer.resData);
   const trailerId = useSelector((state) => state.trailer.trailerId);
-
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -55,7 +92,7 @@ const Home = () => {
                 {
                   trendingData?.results?.map((item) => (
                     <MovieCard
-                      id = {item.id}
+                      id={item.id}
                       key={item.id}
                       src={`${url}${item.poster_path}`}
                       title={item.title}
