@@ -1,12 +1,12 @@
 import React from "react";
-import "./loginPage.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
-import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
 import axios from "axios";
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -15,7 +15,11 @@ const LoginPage = () => {
     event.preventDefault();
     try {
       axios
-        .post("http://localhost:8000/api/v1/auth/login", { email, password })
+        .post("http://localhost:8000/api/v1/auth/register", {
+          name,
+          email,
+          password,
+        })
         .then((response) => {
           toast.success("Logged in Successfully");
           localStorage.setItem("auth", JSON.stringify(response.data));
@@ -33,8 +37,20 @@ const LoginPage = () => {
     <div className="login-wrapper">
       <Toaster />
       <div className="container">
-        <h2 className="login-title">Log in</h2>
+        <h2 className="login-title">Sign up</h2>
         <form className="login-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name </label>
+            <input
+              id="name"
+              value={name}
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Ajay"
+              name="email"
+              required
+            />
+          </div>
           <div>
             <label htmlFor="email">Email </label>
             <input
@@ -60,11 +76,11 @@ const LoginPage = () => {
             />
           </div>
           <button className="btn btn--form" type="submit" value="Log in">
-            Log in
+            Sign up
           </button>
           <h2 style={{ color: "white", textAlign: "center" }}>
-            Don't have an account?{" "}
-            <Link className="link" to="/register">
+            Already have an account?{" "}
+            <Link className="link" to="/login">
               Sign up
             </Link>
           </h2>
@@ -74,4 +90,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

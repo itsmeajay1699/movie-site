@@ -20,11 +20,13 @@ const registerController = (req, res) => {
       email,
       password: hashPassword(password),
     });
-    user 
+    user
       .save()
       .then((user) => {
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
         res.json({
           user: user,
+          token: token,
           message: "user created successfully",
         });
       })

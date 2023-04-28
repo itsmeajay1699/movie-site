@@ -1,6 +1,7 @@
 @import "../../mixins.scss";
 
 .detail-wrapper {
+  color: white;
   .billed-cast {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -46,4 +47,19 @@
   ::-webkit-scrollbar-thumb {
     background: #888;
   }
+}
+
+.video-wrapper {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  padding: 50px 0;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.video-player {
+  min-width: 400px;
+  height: 300px;
+  margin-right: 20px;
 }

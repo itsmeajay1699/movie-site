@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./header.scss";
 
@@ -11,6 +12,7 @@ import Utils from "../../utils/Utils";
 const Header = () => {
   const [show, setShow] = useState("top");
   const [mobileMenu, setMobileMenu] = useState(false);
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState("");
   const searchHandle = (e) => {
@@ -64,7 +66,7 @@ const Header = () => {
               className="menuItem"
               onClick={() => {
                 localStorage.removeItem("auth");
-                window.location.reload();
+                navigate("/login");
               }}
             >
               Logout

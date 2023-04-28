@@ -6,6 +6,7 @@ const ProtectUserDashBoard = () => {
   const [ok, setOk] = React.useState(false);
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("auth"));
+    console.log(user)
     if (user && user.token) {
       axios
         .get("http://localhost:8000/api/v1/auth/test", {

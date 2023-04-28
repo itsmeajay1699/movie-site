@@ -7,6 +7,15 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(3, 3, 34) 35%,
+    rgba(0, 213, 255, 0.144) 100%
+  );
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -28,4 +37,17 @@ ul {
 }
 li {
   margin: 10px 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: #3d9989;
+}
+
+svg {
+  cursor: pointer;
 }

@@ -45,7 +45,10 @@ const Footer = () => {
       </div>
       <div className="icons">
         <BsInstagram className="ig-icon" />
-        <AiFillGithub className="git-icon" />
+        <AiFillGithub
+          onClick={() => window.open("https://github.com/itsmeajay1699")}
+          className="git-icon"
+        />
         <AiFillLinkedin className="li-icon" />
       </div>
     </div>

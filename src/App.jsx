@@ -14,6 +14,9 @@ import Detail from "./pages/details/Detail";
 import ProtectUserDashBoard from "./protectRoutes/home";
 import LoginPage from "./pages/loginPage/loginPage";
 import { login } from "./store/userSlice";
+import RegisterPage from "./pages/registerPage/RegisterPage";
+import SearchPage from "./pages/searchPage/SearchPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 function App() {
   useEffect(() => {
@@ -70,6 +73,9 @@ function App() {
           </Route>
           <Route path="/movie/:id" element={<Detail />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/search/:query" element={<SearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -159,26 +159,51 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="section-two-container">
-            <div className="section-two-items">
-              <div className="opacity-layer"></div>
-              <SimpleSlider>
-                {popularData?.results?.map((item) => (
-                  <MovieCard
-                    id={item.id}
-                    key={item.id}
-                    src={item.poster_path || item.profile_path}
-                    title={item.title || item.name}
-                    date={
-                      item.release_date ||
-                      item.first_air_date ||
-                      item.known_for_department
-                    }
-                  />
-                ))}
-              </SimpleSlider>
+          {((popularUrl === "movie" || popularUrl === "tv") && (
+            <div className="section-two-container">
+              <div className="section-two-items">
+                <div className="opacity-layer"></div>
+                <SimpleSlider>
+                  {popularData?.results?.map((item) => (
+                    <MovieCard
+                      id={item.id}
+                      key={item.id}
+                      src={item.poster_path || item.profile_path}
+                      title={item.title || item.name}
+                      date={
+                        item.release_date ||
+                        item.first_air_date ||
+                        item.known_for_department
+                      }
+                    />
+                  ))}
+                </SimpleSlider>
+              </div>
             </div>
-          </div>
+          )) ||
+            (popularUrl === "person" && (
+              <div className="section-two-container">
+                <div className="section-two-items">
+                  <div className="opacity-layer"></div>
+                  <SimpleSlider>
+                    {popularData?.results?.map((item) => (
+                      <MovieCard
+                        path="/home"
+                        id={item.id}
+                        key={item.id}
+                        src={item.poster_path || item.profile_path}
+                        title={item.title || item.name}
+                        date={
+                          item.release_date ||
+                          item.first_air_date ||
+                          item.known_for_department
+                        }
+                      />
+                    ))}
+                  </SimpleSlider>
+                </div>
+              </div>
+            ))}
         </ContentWrapper>
         <Footer />
       </div>
