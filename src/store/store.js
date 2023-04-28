@@ -6,6 +6,7 @@ import popularSlice from "./popular";
 import trailerSlice from "./trailerSlice";
 import movieDetailSlice from "./movieDetailSlice";
 import mediaSlice from "./mediaTypeSlice";
+import userSlice from "./userSlice";
 export const store = configureStore({
   reducer: {
     home: homeSlice,
@@ -14,5 +15,6 @@ export const store = configureStore({
     trailer: trailerSlice,
     movieDetail: movieDetailSlice,
     media: mediaSlice,
+    user: userSlice,
   },
 });

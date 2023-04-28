@@ -11,8 +11,21 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { getTrailerData } from "./store/trailerSlice";
 import "./App.css";
 import Detail from "./pages/details/Detail";
+import ProtectUserDashBoard from "./protectRoutes/home";
+import LoginPage from "./pages/loginPage/loginPage";
+import { login } from "./store/userSlice";
 
 function App() {
+  useEffect(() => {
+    try {
+      const auth = JSON.parse(localStorage.getItem("auth"));
+      if (auth) {
+        dispatch(login(auth));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   const dispatch = useDispatch();
   const trendingUrl = useSelector((state) => state.trending.trendingUrl);
   const popularUrl = useSelector((state) => state.popular.popularUrl);
@@ -52,8 +65,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ProtectUserDashBoard />}>
+            <Route path="home" element={<Home />} />
+          </Route>
           <Route path="/movie/:id" element={<Detail />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>

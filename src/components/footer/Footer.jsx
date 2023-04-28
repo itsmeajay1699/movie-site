@@ -5,14 +5,15 @@ import Utils from "../../utils/Utils";
 import { BsInstagram } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
-
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const user = useSelector((state) => state.user.user);
   return (
     <div className="footer-wrapper">
       <div className="footer-items">
         <div className="first">
           <Img src={Utils.footerLogoUrl} className="img"></Img>
-          <span className="span">Hi itsmeajay___</span>
+          <span className="span">Hi {user?.user?.name}</span>
         </div>
         <div className="second">
           <h2>The Basics</h2>

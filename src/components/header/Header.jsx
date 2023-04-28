@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
-import { useNavigate, useLocation } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import "./header.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
@@ -14,8 +13,6 @@ const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState("");
-  // const navigate = useNavigate();
-  // const location = useLocation();
   const searchHandle = (e) => {
     if (e.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
@@ -48,7 +45,7 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
   }, []);
-
+  const user = useSelector((state) => state.user.user);
   return (
     <header
       className={`header ${mobileMenu ? "mobileView" : ""} ${
@@ -62,8 +59,21 @@ const Header = () => {
         <ul className="menuItems">
           <li className="menuItem">Movies</li>
           <li className="menuItem">TV Shows</li>
+          {user ? (
+            <li
+              className="menuItem"
+              onClick={() => {
+                localStorage.removeItem("auth");
+                window.location.reload();
+              }}
+            >
+              Logout
+            </li>
+          ) : (
+            <li className="menuItem">Login</li>
+          )}
           <li className="menuItem">
-            <HiOutlineSearch />
+            <HiOutlineSearch onClick={openSearch} />
           </li>
         </ul>
         <div className="mobileMenuItems">
