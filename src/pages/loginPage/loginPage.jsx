@@ -3,7 +3,7 @@ import "./loginPage.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
 import axios from "axios";
 const LoginPage = () => {
@@ -20,7 +20,7 @@ const LoginPage = () => {
           toast.success("Logged in Successfully");
           localStorage.setItem("auth", JSON.stringify(response.data));
           dispatch(login(response.data));
-          navigate("/home");
+          navigate("/");
         })
         .catch((error) => {
           toast.error(error.response.data.error);

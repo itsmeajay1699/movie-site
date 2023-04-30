@@ -4,13 +4,14 @@ import Img from "../lazyLoadImage/img";
 import "./trailerCard.scss";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { MdOutlinePlayCircleOutline } from "react-icons/md";
 import { getTrailerKey } from "../../store/trailerSlice";
 import useFetch from "../../api/useFetch";
 const TrailerCard = ({ id, src, title, date }) => {
   const url = useSelector((state) => state.home.url.poster);
-  
+
   const dispatch = useDispatch();
-   const fetchTrailer = async (id) => {
+  const fetchTrailer = async (id) => {
     const apiData = await axios.get(
       `${
         import.meta.env.VITE_REACT_APP_TMBD_API_BASE_URL
@@ -26,7 +27,7 @@ const TrailerCard = ({ id, src, title, date }) => {
       <div className="movie-top" onClick={() => fetchTrailer(id)}>
         <Img src={url + src} alt="movie poster" className="movie-poster"></Img>
         <div className="yt">
-          <AiFillYoutube />
+          <MdOutlinePlayCircleOutline />
         </div>
       </div>
 

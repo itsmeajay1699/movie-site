@@ -7,8 +7,6 @@ const Spinner = () => {
   const count = useSelector((state) => state.user.count);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // make a setInterval function that will dispatch the incCount action every 1 second
-  // and clear the interval when the count is 100
   React.useEffect(() => {
     const interval = setInterval(() => {
       if (count == 0) {

@@ -15,9 +15,16 @@
   .media {
     display: flex;
     align-items: center;
-    justify-content: space-around;
     margin-top: 20px;
-    width: 38%;
+    font-size: 0.6rem;
+    h2 {
+      margin-right: 20px;
+      font-size: 0.8rem;
+    }
+    width: 100%;
+    div {
+      margin-left: 20px;
+    }
     .type {
       font-size: 1.8rem;
       font-weight: 600;

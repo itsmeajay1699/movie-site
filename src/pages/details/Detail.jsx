@@ -15,37 +15,33 @@ import ReactPlayer from "react-player";
 import DetailPageSpinner from "../../components/detailPageSpinner/DetailPageSpinner";
 
 const Detail = () => {
-  const { id } = useParams();
-  const popularUrl = useSelector((state) => state.popular.popularUrl);
+  const { id, type } = useParams();
   const trailerId = useSelector((state) => state.trailer.trailerId);
   const dispatch = useDispatch();
-  const { apiData: movieData } = useFetch(
-    `/${popularUrl}/${id}&language=en-US`
+  const { apiData: movieData, isLoading } = useFetch(
+    `/${type}/${id}&language=en-US`
   );
+
   dispatch(getMovieDetail(movieData));
-  const { apiData: movieCredits } = useFetch(`/${popularUrl}/${id}/credits`);
+  const { apiData: movieCredits } = useFetch(`/${type}/${id}/credits`);
   dispatch(getMovieCredits(movieCredits?.cast));
 
   const url = useSelector((state) => state.home.url.poster);
 
   const movieCredit = useSelector((state) => state.movieDetail.movieCredits);
 
-  const { apiData: trailerKey } = useFetch(`/${popularUrl}/${id}/videos`);
-  console.log(trailerKey);
+  const { apiData: trailerKey } = useFetch(`/${type}/${id}/videos`);
 
   const media = useSelector((state) => state.media.media);
 
   // fetch poster and backdrop images
 
-  const { apiData: movieImages } = useFetch(`/${popularUrl}/${id}/images`);
+  const { apiData: movieImages } = useFetch(`/${type}/${id}/images`);
   dispatch(setMediaData(movieImages));
   const mediaData = useSelector((state) => state.media.mediaData);
-
-  console.log(media);
-
   return (
     <>
-      {(movieData && (
+      {movieData && (
         <div className="detail-wrapper">
           <DetailPageBanner movieDetail={movieData} />
           <ContentWrapper>
@@ -139,7 +135,7 @@ const Detail = () => {
             </div>
           )}
         </div>
-      )) || <DetailPageSpinner />}
+      )}
     </>
   );
 };

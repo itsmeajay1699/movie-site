@@ -5,6 +5,7 @@
   .section-two-title {
     margin-top: 20px;
     display: flex;
+    color: #fff;
     align-items: center;
     .btn-container {
       margin-left: 30px;
@@ -74,7 +75,7 @@
 .latest-btn {
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: #032541;
+  background-color: white;
 }
 
 .trailer-container {
@@ -94,16 +95,15 @@
   width: 80%;
   height: 50%;
   position: relative;
-  @include sm{
+  @include sm {
     width: 70%;
     height: 55%;
   }
-  @include md{
+  @include md {
     width: 80%;
     height: 60%;
   }
 }
-
 
 @keyframes fadeIn {
   from {
@@ -113,5 +113,3 @@
     opacity: 1;
   }
 }
-
-

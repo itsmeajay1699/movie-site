@@ -10,12 +10,14 @@ import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 const heroBanner = () => {
   const [search, setSearch] = useState("");
   const [img, setImg] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
+    console.log(e.key);
+    console.log(search);
     if (e.key === "Enter" && search.length > 0) {
       navigate(`/search/${search}`);
-    } 
+    }
   };
   const url = useSelector((state) => state.home.url);
 
@@ -23,7 +25,8 @@ const heroBanner = () => {
 
   useEffect(() => {
     const image =
-     url.poster + apiData?.results[Math.floor(Math.random() * 20)].backdrop_path;
+      url.poster +
+      apiData?.results[Math.floor(Math.random() * 20)].backdrop_path;
     setImg(image);
   }, [apiData]);
 
@@ -48,7 +51,9 @@ const heroBanner = () => {
               onKeyUp={handleInput}
               placeholder="Search for a movie or tv show..."
             />
-            <button className="">Search</button>
+            <button onClick={() => navigate(`/search/${search}`)} className="">
+              Search
+            </button>
           </div>
         </div>
       </ContentWrapper>

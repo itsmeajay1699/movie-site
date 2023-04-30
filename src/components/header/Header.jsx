@@ -59,8 +59,6 @@ const Header = () => {
           <img src={Utils.logoUrl} alt="logo" />
         </div>
         <ul className="menuItems">
-          <li className="menuItem">Movies</li>
-          <li className="menuItem">TV Shows</li>
           {user ? (
             <li
               className="menuItem"

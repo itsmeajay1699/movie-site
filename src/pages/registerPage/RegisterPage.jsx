@@ -24,7 +24,7 @@ const RegisterPage = () => {
           toast.success("Logged in Successfully");
           localStorage.setItem("auth", JSON.stringify(response.data));
           dispatch(login(response.data));
-          navigate("/home");
+          navigate("/");
         })
         .catch((error) => {
           toast.error(error.response.data.error);
@@ -81,7 +81,7 @@ const RegisterPage = () => {
           <h2 style={{ color: "white", textAlign: "center" }}>
             Already have an account?{" "}
             <Link className="link" to="/login">
-              Sign up
+              Login
             </Link>
           </h2>
         </form>

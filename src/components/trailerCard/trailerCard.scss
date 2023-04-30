@@ -28,6 +28,8 @@
   }
 }
 
+
+
 .movie-top {
   position: relative;
 }
@@ -37,5 +39,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 50px;
-  color: #ff0000;
+  color: white;
+}
+
+.yt:hover {
+  color: red;
 }

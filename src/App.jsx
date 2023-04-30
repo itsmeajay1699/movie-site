@@ -69,9 +69,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ProtectUserDashBoard />}>
-            <Route path="home" element={<Home />} />
+            <Route path="" element={<Home />} />
           </Route>
-          <Route path="/movie/:id" element={<Detail />} />
+          <Route path="/movie/:id/:type" element={<Detail />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/search/:query" element={<SearchPage />} />

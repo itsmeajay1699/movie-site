@@ -6,7 +6,6 @@ const ProtectUserDashBoard = () => {
   const [ok, setOk] = React.useState(false);
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("auth"));
-    console.log(user)
     if (user && user.token) {
       axios
         .get("http://localhost:8000/api/v1/auth/test", {
@@ -16,13 +15,12 @@ const ProtectUserDashBoard = () => {
         })
         .then((res) => {
           setOk(res.data.ok);
-          console.log(res.data.ok);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, []);
+  }, [setOk, ok]);
 
   return ok ? <Outlet /> : <Spinner />;
 };

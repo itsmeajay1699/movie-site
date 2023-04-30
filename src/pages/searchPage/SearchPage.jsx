@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moviePoster from "../../assets/no-poster.png";
 import axios from "axios";
 import SearchMovieCard from "../../components/SearchMovieCard/SearchMovieCard";
+import DetailPageSpinner from "../../components/detailPageSpinner/DetailPageSpinner";
 const SearchPage = () => {
   const { query } = useParams();
   const url = useSelector((state) => state.home.url.poster);
@@ -32,21 +33,25 @@ const SearchPage = () => {
   return (
     <>
       <Header />
-      <ContentWrapper>
-        <div className="search-page-container">
-          {resSerachData.map((item) => {
-            return (
-              <SearchMovieCard
-                key={item.id}
-                src={item.poster_path ? url + item.poster_path : moviePoster}
-                title={item.title}
-                releaseDate={item.release_date}
-                desc={item.overview}
-              />
-            );
-          })}
-        </div>
-      </ContentWrapper>
+      {resSerachData.length > 0 ? (
+        <ContentWrapper>
+          <div className="search-page-container">
+            {resSerachData.map((item) => {
+              return (
+                <SearchMovieCard
+                  key={item.id}
+                  src={item.poster_path ? url + item.poster_path : moviePoster}
+                  title={item.title}
+                  releaseDate={item.release_date}
+                  desc={item.overview}
+                />
+              );
+            })}
+          </div>
+        </ContentWrapper>
+      ) : (
+        <DetailPageSpinner />
+      )}
     </>
   );
 };

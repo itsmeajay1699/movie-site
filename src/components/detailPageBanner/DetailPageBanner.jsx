@@ -50,15 +50,16 @@ const DetailPageBanner = ({ movieDetail }) => {
                   {item.name}
                 </div>
               ))}
-              {" " + movieDetail?.runtime ||
-                " min" + " " + movieDetail?.episode_run_time ||
-                " " + "min" + " " + movieDetail?.release_date.slice(5, 7) ||
-                movieDetail?.first_air_date.slice(5, 7) +
-                  "/" +
-                  movieDetail?.release_date.slice(8, 10) ||
-                movieDetail?.first_air_date.slice(8, 10) +
-                  "/" +
-                  movieDetail?.release_date.slice(0, 4)}
+              {
+                // show run if not then show episode run time
+                movieDetail?.runtime ? (
+                  <div className="genre-item">{movieDetail?.runtime} min</div>
+                ) : (
+                  <div className="genre-item">
+                    {movieDetail?.episode_run_time[0]} min
+                  </div>
+                )
+              }
             </div>
             <div
               onClick={() => fetchTrailer(movieDetail?.id)}

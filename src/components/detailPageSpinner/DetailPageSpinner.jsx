@@ -9,7 +9,7 @@ const DetailPageSpinner = () => {
     React.useEffect(() => {
       const interval = setInterval(() => {
         if (count == 2) {
-          navigate("/home");
+          navigate("/");
           dispatch(setCount());
         } else {
           dispatch(incCount());
